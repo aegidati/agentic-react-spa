@@ -1,92 +1,110 @@
-# react-spa starter
+# Agentic React SPA
 
-`react-spa` is a minimal, production-like frontend starter for a full-stack setup.
+## Purpose
 
-It is designed to be installed into a derived project under `app/web/`.
+This starter provides the web frontend foundation for Agentic platform projects.
 
-## Stack
+It implements a React Single Page Application architecture intended for deterministic integration inside the platform ecosystem.
 
-- Node.js 20+
-- Vite + React + TypeScript
-- `react-router-dom` for client-side routing
-- Vitest + React Testing Library
+The goal is to provide a reusable frontend baseline that can evolve independently from backend, contracts, and runtime composition.
 
-## Included behavior
+---
 
-- Route `/` → `HomePage`
-- Route `/health` → `HealthPage`
-- `HealthPage` calls `GET ${VITE_API_BASE_URL}/health` using `fetch`
-- Default backend base URL fallback: `http://localhost:3000`
+## Install target
 
-## Install this starter in a derived project
+This starter installs into:
 
-### Option 1: Copy files
+app/web
 
-Copy everything from:
+---
 
-- `react-spa/app/*`
+## Included
 
-Into your derived project:
+- React SPA foundation
+- Frontend application bootstrap
+- Vite-based development structure
+- Basic web app structure for UI development
 
-- `target/app/web/`
+---
 
-### Option 2: Git subtree
+## Not included
 
-From your derived project repository root:
+This starter intentionally does not include:
 
-```bash
-git subtree add --prefix=app/web <starter-repo> main --squash
-git subtree pull --prefix=app/web <starter-repo> main --squash
-```
+- Business-specific pages
+- Authentication flows
+- API client integration details
+- Observability tooling
+- Production deployment configuration
 
-Example with a named remote:
+Those concerns are handled by other starters or feature modules.
 
-```bash
-git remote add starters <path-or-url-to-agentic-architecture-starters>
-git fetch starters
-git subtree add --prefix=app/web starters main --squash
-git subtree pull --prefix=app/web starters main --squash
-```
+---
 
-## Configure backend base URL
+## Prerequisites
 
-Set `VITE_API_BASE_URL` in `.env` (or your environment):
+Typical runtime prerequisites:
 
-```bash
-VITE_API_BASE_URL=http://localhost:3000
-```
+- Node.js runtime
+- Frontend package manager (npm / pnpm / yarn)
+- Optional Docker runtime for fullstack composition
 
-A template is provided in `app/.env.example`.
+---
 
-## Run locally
+## Expected structure after installation
 
-From `app/`:
+app/web
 
-```bash
-npm install
-npm run dev
-```
+---
 
-Build for production:
+## Installation
 
-```bash
-npm run build
-```
+1. Create a project using AGENTIC-TEMPLATE.
+2. Install this starter into:
 
-Run tests:
+app/web
 
-```bash
-npm test
-```
+3. Install frontend dependencies.
+4. Run validation checks.
 
-## Feature placement guide
+---
 
-- App shell and route table: `src/app/`
-- Route pages/components: `src/pages/`
-- Backend HTTP calls / API wrappers: `src/services/`
-- Global styles: `src/styles/`
-- Automated tests: `test/`
+## Post-install validation
 
-## ADR note
+Verify that:
 
-After installing this starter into a derived project, create or accept project-specific **ADR-001** describing the chosen full-stack layout and boundaries.
+- frontend dependencies install successfully
+- frontend build command runs
+- frontend lint command runs
+- frontend dev server command is valid
+
+---
+
+## Compatibility
+
+Compatible with:
+
+- agentic-clean-backend
+- agentic-api-contracts-api
+- agentic-postgres-dev
+- agentic-fullstack-composition
+
+---
+
+## Exit criteria
+
+Installation is successful when:
+
+- app/web exists
+- frontend dependencies install successfully
+- frontend build command runs
+- frontend lint command runs
+- no unresolved placeholders remain
+
+---
+
+## Notes
+
+This starter is intentionally minimal.
+
+Application pages, routing structure, API integration, and UI modules should be extended through project-specific features.
