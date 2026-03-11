@@ -2,6 +2,7 @@ id: agentic-react-spa
 name: Agentic React SPA
 version: 0.1.0
 type: frontend
+
 installsInto: app/web
 
 ownedPaths:
@@ -10,24 +11,25 @@ ownedPaths:
 dependencies: []
 
 optionalDependencies:
+  - agentic-clean-backend
   - agentic-api-contracts-api
   - agentic-fullstack-composition
 
 provides:
   - react-spa-foundation
   - vite-foundation
-  - frontend-routing-foundation
-  - web-ui-bootstrap
+  - web-frontend-bootstrap
+  - frontend-structure
 
 requires:
   - node-runtime
   - frontend-package-manager
 
 postInstallChecks:
-  - frontend dependencies install successfully
-  - frontend build command runs
-  - frontend lint command runs
-  - frontend dev server command is valid
+  - frontend dependencies install
+  - frontend build runs
+  - frontend lint runs
+  - frontend dev command is valid
 
 tags:
   - agentic
