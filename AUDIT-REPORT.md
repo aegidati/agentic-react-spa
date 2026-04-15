@@ -65,9 +65,17 @@ Optional integration:
 
 1. Verify frontend directory exists.
 2. Verify frontend dependencies install.
-3. Verify frontend build command runs.
-4. Verify frontend lint command runs.
-5. Verify frontend dev server command is valid.
+3. Verify starter completeness check passes (`npm run validate:starter`).
+4. Verify frontend build command runs.
+5. Verify frontend lint command runs.
+6. Verify frontend dev server command is valid.
+
+Completeness check criteria:
+
+- starter metadata present (`starter.manifest.yaml` or `starter.manifest.yml` in standard repository positions)
+- valid `package.json`
+- minimum web structure (`src/`, entrypoint, host HTML)
+- script/content coherence for `build` and `test`
 
 ---
 

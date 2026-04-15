@@ -45,9 +45,32 @@ Those concerns are handled by other starters or feature modules.
 
 Typical runtime prerequisites:
 
-- Node.js runtime
-- Frontend package manager (npm / pnpm / yarn)
+- Node.js >= 20
+- npm (lockfile support richiesto per npm ci)
 - Optional Docker runtime for fullstack composition
+
+---
+
+## Deterministic completeness checks
+
+This starter includes a deterministic preflight check executed before `npm run build` and `npm run test`.
+
+Validation scope:
+
+- starter metadata present (`starter.manifest.yaml` or `starter.manifest.yml` in standard repository positions)
+- valid `package.json`
+- minimum web structure:
+	- `src/`
+	- entrypoint (`src/main.tsx`, `src/main.jsx`, or explicit equivalent)
+	- host HTML (`index.html` or `public/index.html`)
+- scripts/content coherence:
+	- if `build` exists, structural prerequisites must be satisfied
+	- if `test` exists and does not contain `passWithNoTests`, test artifacts must exist (`.test`/`.spec` files or test folders)
+
+Expected behavior on incomplete install:
+
+- checks fail fast with explicit, actionable errors
+- build/test are blocked before toolchain-level opaque failures
 
 ---
 
@@ -74,6 +97,7 @@ app/web
 Verify that:
 
 - frontend dependencies install successfully
+- `npm run validate:starter` passes
 - frontend build command runs
 - frontend lint command runs
 - frontend dev server command is valid

@@ -7,9 +7,12 @@
     "node": ">=20"
   },
   "scripts": {
+    "validate:starter": "node ./scripts/validate-starter.cjs",
     "dev": "vite",
+    "prebuild": "npm run validate:starter",
     "build": "tsc -p tsconfig.json && vite build",
     "preview": "vite preview",
+    "pretest": "npm run validate:starter",
     "test": "vitest run",
     "test:watch": "vitest"
   },
